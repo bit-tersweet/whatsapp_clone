@@ -3,9 +3,10 @@ import "./SidebarChat.css"
 import { Avatar } from '@material-ui/core'
 import db from './firebase'
 import {Link} from 'react-router-dom'
-function SidebarChat({id, name, addNewChat }) {
+function SidebarChat({id, name, link, addNewChat }) {
     const [seed, setSeed] = useState("");
     const [messages, setMessages] = useState("")
+    const [avatarLinks, setAvatarLinks] = useState([])
 
     useEffect(() => {
         if(id){
@@ -16,7 +17,9 @@ function SidebarChat({id, name, addNewChat }) {
                 .onSnapshot(snapshot => (
                     setMessages(snapshot.docs.map((doc) =>doc.data()))
             ))
+            
         }
+        console.log(avatarLinks)
     }, [id]);
 
     useEffect(() => {
@@ -34,12 +37,13 @@ function SidebarChat({id, name, addNewChat }) {
 
     }
     return !addNewChat ? (
+        
         <Link to={`/rooms/${id}`}>
             <div className="sidebarChat">
-                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg` } />
+                <Avatar src={link} />
                 <div className="sidebarChat__info">
-                    <h2> {name}</h2>
-                    <p>{messages[0]?.message}</p>
+                    <h2> {name} </h2>
+                    <p> {messages[0]?.message} </p>
 
                 </div>
             </div>
