@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {useParams} from 'react-router-dom'
 import './Chat.css'
 import Avatar from "@material-ui/core/Avatar"
-import { SearchOutlined, AttachFile, MoreVert, InsertEmoticon, MessageSharp } from '@material-ui/icons'
+import { SearchOutlined, AttachFile, MoreVert, InsertEmoticon } from '@material-ui/icons'
 import IconButton from "@material-ui/core/IconButton"
 import MicIcon from '@material-ui/icons/Mic'
 import db from './firebase'
